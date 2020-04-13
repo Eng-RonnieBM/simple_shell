@@ -1,0 +1,54 @@
+.TH man 3 "April 13 2020" "0.01" "my_shell"
+.SH NAME
+.B my_shell
+- It is a re-creation of the shell program, for educational purposes.
+.SH SYNOPSIS
+To compile this program, you should have the following files:
+
+.RS 5
+<library.h> , <01-myshell.c> , <0a-prompt.c>, <0b-read_line.c>,
+.RS 0
+<0c-env_handle.c> , <3-executor.c>, <string_functions_1.c>,
+.RS 0
+<string_functions_2.c>
+
+.RS -5
+.B compiling example:
+gcc -Wall -Werror -Wextra -pedantic *.c -o my_shell
+.SH DESCRIPTION
+<my_shell> program repplies the basic functions of a linux Shell terminal,
+.RS 0
+it operates in two modes: interactive/non-interactive.
+
+.SH USAGE
+.B Interactive mode:
+
+.RS 2
+**Once compiled**, run file ./my_shell, and write shell commands on it !.
+.RS 0
+--> i.e: ($) /bin/ls (if know directory & command).
+.RS 0
+--> i.e: ($) ls -la  (if just know commands).
+.RS 0
+--> i.e: ($) exit    (it ends my_shell program).
+
+.RS -2
+.B Non-Interactive mode:
+.RS 2
+It can be used from the SHELL terminal.
+.RS 0
+--> i.e: user@root$ echo "/bin/ls" | ./hsh
+.RS 0
+--> i.e: user@root$ cat test_ls_2 | ./hsh
+
+.SH RETURN VALUES
+<my_shell> program will give you the desired results, if the function
+.RS 0
+were called and executed succesfully, else will print error messages.
+.SH SEE ALSO
+.I man sh
+(try on SHELL terminal).
+.SH BUGS
+No bugs detected in v0.01 (working).
+.SH AUTHOR
+Luz Perdomo - Ronnie Barrios.
