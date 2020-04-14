@@ -9,10 +9,10 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	(void)argc;
-	(void)argv;
 	int keep_prompt;
 	char **paths = fetch_paths(envp);
+	(void)argc;
+	(void)argv;
 
 	keep_prompt = 1;
 	while (keep_prompt)
