@@ -9,21 +9,19 @@
  */
 char *takeInput(int *keep_prompt)
 {
-	size_t buffer_size = BUFF_MAX;
-	char *buffer = (char *)malloc(buffer_size * sizeof(char));
+	size_t buffer_size;
+	char *buffer = NULL;
 	int char_count;
 
-	if (buffer == NULL)
-	{
-		perror("Unable to allocate buffer");
-		exit(1);
-	}
 	char_count = getline(&buffer, &buffer_size, stdin);
 	if (char_count == EOF)
 	{
 		free(buffer);
 		*keep_prompt = 0;
-		write(2, "\n", 1);
+		if (isatty(STDIN == 1))
+		{
+			write(2, "\n", 1);
+		}
 		return (NULL);
 	}
 	if (_strstr(buffer, "exit"))
@@ -36,10 +34,6 @@ char *takeInput(int *keep_prompt)
 	{
 		buffer[char_count - 1] = '\0';
 		--char_count;
-	}
-	if (empty_line(buffer) == 1)
-	{
-		free(buffer);
 	}
 	return (buffer);
 }

@@ -25,10 +25,6 @@ void handle_prompt(int *keep_prompt, char **paths)
 	{
 		prompt();
 	}
-	else
-	{
-		*keep_prompt = 0;
-	}
 	buffer = takeInput(keep_prompt);
 	if (buffer != NULL)
 	{
@@ -36,7 +32,6 @@ void handle_prompt(int *keep_prompt, char **paths)
 		execute_comand(params, paths, keep_prompt);
 		free(params);
 	}
-	free(buffer);
 }
 
 /**
@@ -48,5 +43,5 @@ char **fill_params(char *buffer)
 {
 	if (buffer == NULL)
 		return (NULL);
-	return (separate_string(buffer, " "));
+	return (separate_string(buffer, " \t\n"));
 }
