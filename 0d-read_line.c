@@ -35,5 +35,9 @@ char *takeInput(int *keep_prompt)
 		buffer[char_count - 1] = '\0';
 		--char_count;
 	}
+	if (empty_line(buffer) == 1)
+	{
+		free(buffer);
+	}
 	return (buffer);
 }
