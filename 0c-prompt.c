@@ -32,9 +32,9 @@ void handle_prompt(int *keep_prompt, char **paths)
 	buffer = takeInput(keep_prompt);
 	if (buffer != NULL)
 	{
-	params = fill_params(buffer);
-	execute_comand(params, paths);
-	free(params);
+		params = fill_params(buffer);
+		execute_comand(params, paths, keep_prompt);
+		free(params);
 	}
 	free(buffer);
 }

@@ -31,7 +31,7 @@ void handle_prompt(int *keep_prompt, char **paths);
 char **fill_params(char *buffer);
 
 /* 3-executor.c */
-void execute_comand(char **params, char **paths);
+void execute_comand(char **params, char **paths, int *keep_prompt);
 void attach_path(char *comand, char **paths);
 
 /* 0c-read_line.c */

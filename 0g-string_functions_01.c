@@ -33,7 +33,7 @@ char **separate_string(char *string, char *sep)
 	if (params == NULL)
 	{
 		perror("Unable to allocate params");
-		exit(1);
+		return (NULL);
 	}
 	token = strtok(string, sep);
 	while (token != NULL)

@@ -5,9 +5,10 @@
  *
  * @params: string to be read and execute.
  * @paths: array of strings with op. system's main paths.
+ * @keep_prompt: var to keep iterating
  * Return: No Return.
  */
-void execute_comand(char **params, char **paths)
+void execute_comand(char **params, char **paths, int *keep_prompt)
 {
 	char *comand;
 	pid_t child_pid;
@@ -24,7 +25,8 @@ void execute_comand(char **params, char **paths)
 	if (child_pid == -1)
 	{
 		perror("Error:");
-		exit(1);
+		*keep_prompt = 0;
+		return;
 	}
 	if (child_pid == 0)
 	{
@@ -34,13 +36,13 @@ void execute_comand(char **params, char **paths)
 		{
 			perror("Error:");
 		}
-		exit(0);
+		*keep_prompt = 0;
 	}
 	else /* parent process*/
 	{
 		wait(&status);
-		free(comand);
 	}
+	free(comand);
 }
 
 /**
