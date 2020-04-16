@@ -33,6 +33,7 @@ void handle_prompt(int *keep_prompt, char **paths, char **envp)
 		execute_comand(params, paths, keep_prompt);
 		free(params);
 	}
+	free(buffer);
 }
 
 /**

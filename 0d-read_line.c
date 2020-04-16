@@ -26,12 +26,13 @@ char *takeInput(int *keep_prompt, char **envp)
 	}
 	if (_strstr(buffer, "exit"))
 	{
-		buffer[0] = '\0';
+		free(buffer);
 		*keep_prompt = 0;
 		return (NULL);
 	}
 	if (_strstr(buffer, "env"))
 	{
+		free(buffer);
 		call_envp(envp);
 		return (NULL);
 	}
@@ -39,6 +40,10 @@ char *takeInput(int *keep_prompt, char **envp)
 	{
 		buffer[char_count - 1] = '\0';
 		--char_count;
+	}
+	if (empty_line(buffer) == 1)
+	{
+		free(buffer);
 	}
 	return (buffer);
 }
