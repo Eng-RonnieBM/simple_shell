@@ -14,9 +14,10 @@ void prompt(void)
  * handle_prompt - Function to print the prompt, get the command and execute.
  * @keep_prompt: variable with true value.
  * @paths: array of strings with the op.system's main paths.
+ * @envp: environment variables.
  * Return: No Return, free.
  */
-void handle_prompt(int *keep_prompt, char **paths)
+void handle_prompt(int *keep_prompt, char **paths, char **envp)
 {
 	char *buffer;
 	char **params;
@@ -25,14 +26,13 @@ void handle_prompt(int *keep_prompt, char **paths)
 	{
 		prompt();
 	}
-	buffer = takeInput(keep_prompt);
+	buffer = takeInput(keep_prompt, envp);
 	if (buffer != NULL)
 	{
 		params = fill_params(buffer);
 		execute_comand(params, paths, keep_prompt);
 		free(params);
 	}
-	free(buffer);
 }
 
 /**

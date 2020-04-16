@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+
 #define BUFF_MAX 1024 /* max buffer size*/
 #define MAXLIST 100 /* max number of commands to be supported.*/
 #define STDOUT STDOUT_FILENO /* abbreviating this variable.*/
@@ -27,7 +28,7 @@ char **separate_string(char *string, char *sep);
 
 /* 0b-prompt.c */
 void prompt(void);
-void handle_prompt(int *keep_prompt, char **paths);
+void handle_prompt(int *keep_prompt, char **paths, char **envp);
 char **fill_params(char *buffer);
 
 /* 3-executor.c */
@@ -35,7 +36,7 @@ void execute_comand(char **params, char **paths, int *keep_prompt);
 void attach_path(char *comand, char **paths);
 
 /* 0c-read_line.c */
-char *takeInput(int *keep_prompt);
+char *takeInput(int *keep_prompt, char **envp);
 
 /*NEEDED STRING FUNCTIONS*/
 int _strlen(char *s);
@@ -45,6 +46,7 @@ char *_strncat(char *dest, char *src, int n);
 void strClear(char *string, int len);
 char *_strstr(char *haystack, char *needle);
 char *_strchr(char *s, char c);
+char call_envp(char **envp);
 
 /*PRINT CURRENT DIRECTORY --- sin usar aun*/
 void printDir(void);

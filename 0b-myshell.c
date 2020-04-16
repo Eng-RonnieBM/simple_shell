@@ -17,7 +17,7 @@ int main(int argc, char **argv, char **envp)
 	keep_prompt = 1;
 	while (keep_prompt)
 	{
-		handle_prompt(&keep_prompt, paths);
+		handle_prompt(&keep_prompt, paths, envp);
 	}
 	free(paths);
 	return (0);

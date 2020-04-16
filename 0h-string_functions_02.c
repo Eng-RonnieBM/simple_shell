@@ -70,3 +70,19 @@ char *_strchr(char *s, char c)
 		return (s + i);
 	return (NULL);
 }
+
+/**
+ * call_envp - call all the enviroments variables
+ * @envp: environment variables.
+ * Return: cero.
+ */
+char call_envp(char **envp)
+{
+	int count_env;
+
+	for (count_env = 0; envp[count_env] != NULL; count_env++)
+	{
+		printf("%s\n", envp[count_env]);
+	}
+	return (0);
+}
