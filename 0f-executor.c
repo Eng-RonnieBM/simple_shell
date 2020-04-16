@@ -5,10 +5,11 @@
  *
  * @params: string to be read and execute.
  * @paths: array of strings with op. system's main paths.
- * @keep_prompt: var to keep iterating
+ * @keep_pr: var to keep iterating.
+ * @argv: command line argument values.
  * Return: No Return.
  */
-void execute_comand(char **params, char **paths, int *keep_prompt)
+void execute_comand(char **params, char **paths, int *keep_pr, char **argv)
 {
 	char *comand;
 	pid_t child_pid;
@@ -25,7 +26,7 @@ void execute_comand(char **params, char **paths, int *keep_prompt)
 	if (child_pid == -1)
 	{
 		perror("Error:");
-		*keep_prompt = 0;
+		*keep_pr = 0;
 		return;
 	}
 	if (child_pid == 0)
@@ -34,11 +35,11 @@ void execute_comand(char **params, char **paths, int *keep_prompt)
 		attach_path(comand, paths);
 		if (execve(comand, params, NULL) == -1)
 		{
-			perror("Error:");
+			print_error(argv, params, "No such file or directory");
 		}
-		*keep_prompt = 0;
+		*keep_pr = 0;
 	}
-	else /* parent process*/
+	else
 	{
 		wait(&status);
 	}

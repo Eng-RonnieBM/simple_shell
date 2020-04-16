@@ -29,11 +29,11 @@ char **separate_string(char *string, char *sep);
 
 /* 0b-prompt.c */
 void prompt(void);
-void handle_pr(int *keep_pr, char **paths, char **envp, int argc, char **argv);
+void handle_prompt(int *keep_pr, char **paths, char **envp, char **argv);
 char **fill_params(char *buffer);
 
 /* 3-executor.c */
-void execute_comand(char **params, char **paths, int *keep_prompt);
+void execute_comand(char **params, char **paths, int *keep_pr, char **argv);
 void attach_path(char *comand, char **paths);
 
 /* 0c-read_line.c */
@@ -57,4 +57,5 @@ int file_exist(char *dir, char *command);
 int find_file(char **paths, char **params);
 void print_error(char **argv, char **params, char *msg);
 int bytes_str(char *str);
+int char_match(char *string, char *simbol);
 #endif

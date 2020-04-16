@@ -9,13 +9,14 @@
  */
 int main(int argc, char **argv, char **envp)
 {
+	(void)argc;
 	int keep_prompt;
 	char **paths = fetch_paths(envp);
 
 	keep_prompt = 1;
 	while (keep_prompt)
 	{
-		handle_pr(&keep_prompt, paths, envp, argc, argv);
+		handle_prompt(&keep_prompt, paths, envp, argv);
 	}
 	free(paths);
 	return (0);

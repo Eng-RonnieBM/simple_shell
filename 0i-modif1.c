@@ -28,12 +28,12 @@ int file_exist(char *dir, char *command)
 	}
 	path[j + i] = '\0';
 	fd = open(path, O_RDONLY); /*opening file*/
-	close(fd); /*closing file*/
 	free(path); /*de-allocating malloc*/
 	if (fd == -1) /*file not exist, return 0*/
 	{
 		return (0);
-	}
+	} /*closing file*/
+	close(fd);
 	return (1); /*file exist, return 1*/
 }
 
@@ -46,21 +46,23 @@ int file_exist(char *dir, char *command)
 int find_file(char **paths, char **params)
 {
 	int i;
-	int find;
 
 	if (paths == NULL || params == NULL)
 	{
 		return (0);
 	}
+	if (char_match(params[0], "/"))
+	{
+		return (1);
+	}
 	for (i = 0; paths[i] != NULL; i++)
 	{
-		if (file_exist(paths[i], params[0]))
+		if (file_exist(paths[i], params[0]) == 1)
 		{
-			find = 1;
-			break;
+			return (1);
 		}
 	}
-	return (find);
+	return (0);
 }
 
 /**
@@ -126,4 +128,28 @@ int bytes_str(char *str)
 		i++;
 	}
 	return (i);
+}
+
+/**
+ * char_match - it finds a character inside a string.
+ * @string: string to be checked.
+ * @simbol: simbol or character to be finded.
+ * Return: 1 if success, 0 if no match.
+ */
+int char_match(char *string, char *simbol)
+{
+	int i;
+
+	if (string == NULL || simbol == NULL)
+	{
+		return (0);
+	}
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		if (string[i] == *simbol)
+		{
+			return (1);
+		}
+	}
+	return (0);
 }

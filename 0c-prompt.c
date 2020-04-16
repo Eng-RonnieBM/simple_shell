@@ -15,16 +15,14 @@ void prompt(void)
  * @keep_pr: variable with true value.
  * @paths: array of strings with the op.system's main paths.
  * @envp: environment variables.
- * @argc: (argc) argument counter.
  * @argv: (argv) argument values.
  * Return: No Return, free.
  */
-void handle_pr(int *keep_pr, char **paths, char **envp, int argc, char **argv)
+void handle_prompt(int *keep_pr, char **paths, char **envp, char **argv)
 {
 	char *buffer;
 	char **params;
 	int find = 0; /*modif 1.0*/
-	(void)argc;   /*modif 1.0*/
 
 	if (isatty(STDIN == 1))
 	{
@@ -37,13 +35,15 @@ void handle_pr(int *keep_pr, char **paths, char **envp, int argc, char **argv)
 		find = find_file(paths, params);/*modif 1.0*/
 		if (find == 1) /*modif 1.0*/
 		{
-			execute_comand(params, paths, keep_pr);
+			execute_comand(params, paths, keep_pr, argv);
 			free(params);
 		}
-		else /*modif 1.0*/
+		else
+		{
 			print_error(argv, params, "not found");/*modif 1.0*/
+		}
+		free(buffer);
 	}
-	free(buffer);
 }
 
 /**
