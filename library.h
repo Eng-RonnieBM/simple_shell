@@ -14,6 +14,7 @@
 
 #define BUFF_MAX 1024 /* max buffer size*/
 #define MAXLIST 100 /* max number of commands to be supported.*/
+#define STDERR STDERR_FILENO /*abbreviating this variable.*/
 #define STDOUT STDOUT_FILENO /* abbreviating this variable.*/
 #define STDIN STDIN_FILENO /*abbreviating this variable.*/
 #define CLEAR_SCREEN write(STDOUT, "\033[H\033[J", 6) /*a macro*/
@@ -28,7 +29,7 @@ char **separate_string(char *string, char *sep);
 
 /* 0b-prompt.c */
 void prompt(void);
-void handle_prompt(int *keep_prompt, char **paths, char **envp);
+void handle_pr(int *keep_pr, char **paths, char **envp, int argc, char **argv);
 char **fill_params(char *buffer);
 
 /* 3-executor.c */
@@ -51,5 +52,9 @@ char call_envp(char **envp);
 /*PRINT CURRENT DIRECTORY --- sin usar aun*/
 void printDir(void);
 
-
+/*functions of modif 1.0*/
+int file_exist(char *dir, char *command);
+int find_file(char **paths, char **params);
+void print_error(char **argv, char **params, char *msg);
+int bytes_str(char *str);
 #endif
