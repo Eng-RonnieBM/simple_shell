@@ -82,7 +82,8 @@ char call_envp(char **envp)
 
 	for (count_env = 0; envp[count_env] != NULL; count_env++)
 	{
-		printf("%s\n", envp[count_env]);
+		write(STDOUT_FILENO, envp[count_env], _strlen(envp[count_env]));
+		write(STDOUT_FILENO, "\n", 1);
 	}
 	return (0);
 }
