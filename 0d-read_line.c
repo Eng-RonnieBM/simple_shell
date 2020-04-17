@@ -28,7 +28,7 @@ char *takeInput(int *keep_prompt, char **envp)
 	{
 		free(buffer);
 		*keep_prompt = 0;
-		return (NULL);
+		exit(0);
 	}
 	if (_strstr(buffer, "env"))
 	{
