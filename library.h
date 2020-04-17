@@ -20,6 +20,8 @@
 #define CLEAR_SCREEN write(STDOUT, "\033[H\033[J", 6) /*a macro*/
 #define NEW_LINE write(STDOUT, "\n", 1) /*a macro*/
 
+extern char **environ;
+
 /* env_handle.c */
 char **fetch_paths(char **envp);
 char *_getenv(char **envp, char *name);

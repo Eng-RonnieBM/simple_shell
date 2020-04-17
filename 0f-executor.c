@@ -33,7 +33,7 @@ void exec_cmd(char **params, char **paths, int *keep_pr, char **argv)
 	{
 		_strncpy(comand, params[0], _strlen(params[0]));
 		attach_path(comand, paths);
-		if (execve(comand, params, NULL) == -1)
+		if (execve(comand, params, environ) == -1)
 		{
 			print_error(argv, params, "not found");
 		}
