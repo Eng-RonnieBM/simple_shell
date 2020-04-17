@@ -35,7 +35,7 @@ void exec_cmd(char **params, char **paths, int *keep_pr, char **argv)
 		attach_path(comand, paths);
 		if (execve(comand, params, NULL) == -1)
 		{
-			print_error(argv, params, "No such file or directory");
+			print_error(argv, params, "not found");
 		}
 		*keep_pr = 0;
 	}
