@@ -1,7 +1,7 @@
 #include "library.h"
 
 /**
- * execute_comand - function that execute the params typed by user.
+ * exec_cmd - function that execute the params typed by user.
  *
  * @params: string to be read and execute.
  * @paths: array of strings with op. system's main paths.
@@ -9,7 +9,7 @@
  * @argv: command line argument values.
  * Return: No Return.
  */
-void execute_comand(char **params, char **paths, int *keep_pr, char **argv)
+void exec_cmd(char **params, char **paths, int *keep_pr, char **argv)
 {
 	char *comand;
 	pid_t child_pid;

@@ -29,11 +29,11 @@ char **separate_string(char *string, char *sep);
 
 /* 0b-prompt.c */
 void prompt(void);
-void handle_prompt(int *keep_pr, char **paths, char **envp, char **argv);
+void handle_pr(int *keep_prompt, char **paths, char **envp, char **argv);
 char **fill_params(char *buffer);
 
 /* 3-executor.c */
-void execute_comand(char **params, char **paths, int *keep_pr, char **argv);
+void exec_cmd(char **params, char **paths, int *keep_pr, char **argv);
 void attach_path(char *comand, char **paths);
 
 /* 0c-read_line.c */
@@ -51,11 +51,7 @@ char call_envp(char **envp);
 
 /*PRINT CURRENT DIRECTORY --- sin usar aun*/
 void printDir(void);
-
-/*functions of modif 1.0*/
-int file_exist(char *dir, char *command);
-int find_file(char **paths, char **params);
 void print_error(char **argv, char **params, char *msg);
 int bytes_str(char *str);
-int char_match(char *string, char *simbol);
+
 #endif

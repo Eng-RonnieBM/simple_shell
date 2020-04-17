@@ -23,18 +23,12 @@ char **fetch_paths(char **envp)
 char *_getenv(char **envp, char *name)
 {
 	int i = 0;
-	char *c;
 
 	while (envp[i] != NULL)
 	{
 		if (_strstr(envp[i], name))
 		{
-			c = envp[i];
-			if (c[0] == 'P' && c[1] == 'A' && c[2] == 'T' &&
-			   c[3] == 'H' && c[4] == '=' && c[5] == '/')
-			{
-				return (_strchr(envp[i], '=') + 1);
-			}
+			return (_strchr(envp[i], '=') + 1);
 		}
 		i++;
 	}
